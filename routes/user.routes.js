@@ -7,34 +7,16 @@ const authMiddleware = require("../middleware/auth.middleware");
 router.post("/signup", userController.signup);
 router.post("/login", userController.login);
 
-router.get(
-    "/getAllUsers",
-    authMiddleware,
-    userController.getAllUser
-);
+router.user(authMiddleware());
 
-router.put(
-    "/updateUser/:id",
-    authMiddleware,
-    userController.updateUser
-);
+router.get("/getAllUsers",authMiddleware,userController.getAllUser);
 
-router.delete(
-    "/deleteUser/:id",
-    authMiddleware,
-    userController.deleteUser
-);
+router.put("/updateUser/:id",authMiddleware,userController.updateUser);
 
-router.patch(
-    "/softDeleteUser/:id",
-    authMiddleware,
-    userController.softDeleteUser
-);
+router.delete("/deleteUser/:id",authMiddleware,userController.deleteUser);
 
-router.post(
-    "/addUserProfile",
-    authMiddleware,
-    userController.addUserProfile
-);
+router.patch("/softDeleteUser/:id",authMiddleware,userController.softDeleteUser);
+
+router.post("/addUserProfile", authMiddleware, userController.addUserProfile);
 
 module.exports = router;
